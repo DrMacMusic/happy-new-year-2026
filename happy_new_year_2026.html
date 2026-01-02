@@ -5,108 +5,125 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Happy New Year 2026</title>
   <style>
-    :root { --bg1:#050510; --bg2:#0b0b2a; }
-    html, body { height: 100%; margin: 0; font-family: -apple-system, system-ui, Segoe UI, Roboto, Arial, sans-serif; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: -apple-system, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
     body {
-      background: radial-gradient(circle at 30% 20%, #1a1a5a 0%, var(--bg2) 35%, var(--bg1) 80%);
+      background: radial-gradient(circle at 30% 20%, #1a1a5a 0%, #0b0b2a 35%, #050510 80%);
       color: white;
       overflow: hidden;
       display: grid;
       place-items: center;
       text-align: center;
     }
+
     .card {
       position: relative;
-      padding: 28px 22px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 18px 60px rgba(0,0,0,0.55);
+      padding: 32px 24px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 70px rgba(0,0,0,0.6);
       max-width: 720px;
-      margin: 18px;
+      margin: 20px;
+      z-index: 2;
     }
-    h1 { margin: 0 0 10px 0; font-size: clamp(34px, 6vw, 64px); letter-spacing: 0.5px; }
-    .year { font-weight: 800; font-size: clamp(46px, 8vw, 92px); line-height: 1; margin: 6px 0 6px; }
-    p { margin: 10px 0 0; font-size: clamp(16px, 2.6vw, 22px); opacity: 0.92; }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(40px, 7vw, 72px);
+      letter-spacing: 0.5px;
+    }
+
+    .year {
+      font-weight: 800;
+      font-size: clamp(56px, 9vw, 100px);
+      margin: 8px 0;
+      line-height: 1;
+    }
+
+    .from {
+      margin-top: 12px;
+      font-size: clamp(18px, 3vw, 26px);
+      opacity: 0.95;
+    }
+
     .glow {
       background: linear-gradient(90deg, #ffcc33, #ff5dd0, #5de3ff, #8aff5d, #ffcc33);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      text-shadow: 0 0 22px rgba(255, 200, 80, 0.25);
+      text-shadow: 0 0 28px rgba(255, 210, 120, 0.4);
     }
 
-    /* fireworks */
+    /* FIREWORKS */
     .fw {
       position: absolute;
       left: var(--x);
       top: var(--y);
-      width: 6px;
-      height: 6px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: transparent;
       animation: boom var(--t) ease-out infinite;
-      filter: drop-shadow(0 0 8px rgba(255,255,255,0.15));
       pointer-events: none;
+      z-index: 1;
     }
-    .fw::before, .fw::after {
+
+    .fw::before {
       content: "";
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 2px;
-      height: 2px;
-      transform: translate(-50%,-50%);
+      width: 4px;
+      height: 4px;
+      transform: translate(-50%, -50%);
       border-radius: 50%;
       box-shadow:
-        0 -22px 0 var(--c),
-        0  22px 0 var(--c),
-        22px 0 0 var(--c),
-        -22px 0 0 var(--c),
-        16px -16px 0 var(--c),
-        -16px -16px 0 var(--c),
-        16px 16px 0 var(--c),
-        -16px 16px 0 var(--c),
-        0 -34px 0 rgba(255,255,255,0.55),
-        0  34px 0 rgba(255,255,255,0.55);
+        0 -42px 0 var(--c),
+        0  42px 0 var(--c),
+        42px 0 0 var(--c),
+        -42px 0 0 var(--c),
+        30px -30px 0 var(--c),
+        -30px -30px 0 var(--c),
+        30px 30px 0 var(--c),
+        -30px 30px 0 var(--c);
       opacity: 0;
+      filter: drop-shadow(0 0 14px var(--c));
+      animation: sparks var(--t) ease-out infinite;
     }
+
     @keyframes boom {
-      0%   { transform: translate(-50%,-50%) scale(0.2); opacity: 0; }
-      10%  { opacity: 1; }
-      30%  { opacity: 1; }
-      60%  { opacity: 0.9; }
-      100% { transform: translate(-50%,-50%) scale(1.35); opacity: 0; }
+      0%   { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+      15%  { opacity: 1; }
+      60%  { opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
     }
-    .fw::before { animation: sparks var(--t) ease-out infinite; }
-    .fw::after  { animation: sparks2 var(--t) ease-out infinite; }
+
     @keyframes sparks {
-      0%, 15% { opacity: 0; transform: translate(-50%,-50%) scale(0.3); }
-      30%     { opacity: 1; }
-      100%    { opacity: 0; transform: translate(-50%,-50%) scale(1.25); }
+      0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
+      25%  { opacity: 1; }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(1.4); }
     }
-    @keyframes sparks2 {
-      0%, 20% { opacity: 0; transform: translate(-50%,-50%) rotate(20deg) scale(0.25); }
-      35%     { opacity: 1; }
-      100%    { opacity: 0; transform: translate(-50%,-50%) rotate(20deg) scale(1.2); }
-    }
-    footer { margin-top: 14px; font-size: 14px; opacity: 0.7; }
-    a { color: #9be8ff; }
   </style>
 </head>
+
 <body>
-  <div class="card" role="img" aria-label="Happy New Year 2026 with fireworks">
+
+  <div class="card">
     <h1 class="glow">Happy New Year</h1>
     <div class="year glow">2026</div>
-    <p>Wishing you a bright, joyful year ahead 🎆</p>
-    <footer>Made for a QR code scan ✨</footer>
+    <div class="from">From Patty and Erich 🎆</div>
   </div>
 
-  <!-- Decorative fireworks (CSS-only) -->
-  <div class="fw" style="--x:20%; --y:18%; --t:2.8s; --c:#ffcc33;"></div>
-  <div class="fw" style="--x:78%; --y:22%; --t:3.4s; --c:#ff5dd0;"></div>
-  <div class="fw" style="--x:55%; --y:70%; --t:3.1s; --c:#5de3ff;"></div>
-  <div class="fw" style="--x:28%; --y:74%; --t:3.7s; --c:#8aff5d;"></div>
-  <div class="fw" style="--x:86%; --y:78%; --t:4.0s; --c:#ff7a59;"></div>
+  <!-- BIG FIREWORKS -->
+  <div class="fw" style="--x:18%; --y:20%; --t:4.5s; --c:#ffcc33;"></div>
+  <div class="fw" style="--x:50%; --y:14%; --t:5s;   --c:#ff5dd0;"></div>
+  <div class="fw" style="--x:82%; --y:22%; --t:4.8s; --c:#5de3ff;"></div>
+  <div class="fw" style="--x:30%; --y:70%; --t:5.2s; --c:#8aff5d;"></div>
+  <div class="fw" style="--x:72%; --y:74%; --t:4.9s; --c:#ff7a59;"></div>
+
 </body>
 </html>
